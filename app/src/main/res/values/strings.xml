@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="create_task_button">create task button</string>
+    <string name="tasks">TASKS</string>
+    <string name="todo">TODO</string>
+    <string name="add">TODO</string>
+    <string name="new_task">NEW TASK NAME</string>
+    <string name="enter_the_task_name">ENTER THE TASK NAME</string>
+    <string name="task_description">TASK DESCRIPTION</string>
+    <string name="enter_the_task_info">ENTER THE TASK INFO</string>
+    <string name="save">SAVE</string>
+</resources>
