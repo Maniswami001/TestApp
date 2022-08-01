@@ -1,5 +1,6 @@
 package com.example.app;
 
+
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -27,6 +28,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
     public static final String TAG="ActionBottomDialog";
     private EditText newtasktext;
+    private EditText newtaskdesc;
     private Button newTaskSaveButton;
     private DatabaseHandler db;
 
@@ -51,14 +53,19 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view,@Nullable Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
         newtasktext= getView().findViewById(R.id.name);
+        newtaskdesc=getView().findViewById(R.id.Status);
         newTaskSaveButton= getView().findViewById(R.id.save);
+
+
 
         boolean isUpdate=false;
         final Bundle bundle= getArguments();
         if(bundle != null){
             isUpdate=true;
             String task=bundle.getString("task");
+            String desc=bundle.getString("descr");
             newtasktext.setText(task);
+            newtaskdesc.setText(desc);
             assert task !=null;
             if(task.length()>0) {
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), com.google.android.material.R.color.design_default_color_primary_dark));
@@ -79,18 +86,16 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.toString().equals("")){
-                    newTaskSaveButton.setEnabled(false);
-                    newTaskSaveButton.setTextColor(Color.GRAY);
+                    if(charSequence.toString().equals("")){
+                        newTaskSaveButton.setEnabled(false);;
+                        newTaskSaveButton.setTextColor(Color.GRAY);
+                    }
+                    else{
+                        newTaskSaveButton.setEnabled(true);
+                        newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(),R.color.colorPrimaryDark));
+                    }
                 }
-                else{
-                    newTaskSaveButton.setEnabled(true);
-                    newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), com.google.android.material.R.color.design_default_color_primary_dark));
 
-
-                }
-
-            }
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -100,18 +105,23 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
 
 
+
+
         boolean finalIsUpdate = isUpdate;
         newTaskSaveButton.setOnClickListener(view1 -> {
             String text=newtasktext.getText().toString();
+            String text1=newtaskdesc.getText().toString();
             if(finalIsUpdate){
-                db.updatetask(bundle.getInt("id"),text);
+                db.updatetask(bundle.getInt("id"),text,text1);
 
             }
             else{
                 Todomodel task=new Todomodel();
+                Todomodel descr=new Todomodel();
                 task.setTask(text);
                 task.setStatus(0);
-                db.insertTask(task);
+                descr.setDescr(text1);
+                db.insertTask(task,descr);
 
             }
             dismiss();

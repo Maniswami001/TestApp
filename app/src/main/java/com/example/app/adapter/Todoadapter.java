@@ -47,6 +47,7 @@ public class Todoadapter extends RecyclerView.Adapter<Todoadapter.ViewHolder> {
         db.openDatabase();
         Todomodel item=todolist.get(position);
         holder.task.setText(item.getTask());
+        holder.descr.setText(item.getDescr());
         holder.task.setChecked(toBoolean(item.getStatus()));
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -92,6 +93,7 @@ public class Todoadapter extends RecyclerView.Adapter<Todoadapter.ViewHolder> {
         Bundle bundle=new Bundle();
         bundle.putInt("id",item.getId());
         bundle.putString("task",item.getTask());
+        bundle.putString("descr",item.getDescr());
         AddNewTask fragment=new AddNewTask();
         fragment.setArguments(bundle);
         fragment.show(Activity.getSupportFragmentManager(), AddNewTask.TAG);
@@ -101,9 +103,14 @@ public class Todoadapter extends RecyclerView.Adapter<Todoadapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         CheckBox task;
+        CheckBox descr;
+
+
         ViewHolder(View view){
             super(view);
             task=view.findViewById(R.id.checkbox);
+            descr=view.findViewById(R.id.checkbox1);
+
         }
 
     }

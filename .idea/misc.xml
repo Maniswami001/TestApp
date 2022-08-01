@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/drawable/icon_launcher_background.xml" value="0.2115" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/layout/activity_flash.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/layout/add_task.xml" value="0.25" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/layout/new_task.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/layout/new_task.xml" value="0.22" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/mipmap-anydpi-v26/icon_launcher.xml" value="0.2115" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/App/app/src/main/res/mipmap-anydpi-v26/icon_launcher_round.xml" value="0.2115" />
       </map>
     </option>
   </component>
